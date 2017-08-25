@@ -19,8 +19,7 @@ def get_distance():
     distance_element_1 = soup1.select("#disearth")
     distance_element_2 = soup2.select("#disearth")
 
-    print("Voyager I is now {} km from Earth.".format(distance_element_1[0].getText()))
-    print("Voyager II is now {} km from Earth.".format(distance_element_2[0].getText()))
+    distance_voyager_1 = int(distance_element_1[0].getText())
+    distance_voyager_2 = int(distance_element_2[0].getText())
 
-get_distance()
-
+    return "Voyager I is now {:,} km from Earth. \nVoyager II is now {:,} km from Earth.".format(distance_voyager_1, distance_voyager_2)
