@@ -22,4 +22,4 @@ def get_distance():
     distance_voyager_1 = int(distance_element_1[0].getText())
     distance_voyager_2 = int(distance_element_2[0].getText())
 
-    return "Voyager I is now {:,} km from Earth. \nVoyager II is now {:,} km from Earth.".format(distance_voyager_1, distance_voyager_2)
+    return (distance_voyager_1, distance_voyager_2)
