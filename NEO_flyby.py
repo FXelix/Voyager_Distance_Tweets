@@ -5,9 +5,7 @@ import requests
 import json
 
 
-def get_NEO_flyby():
-
-    neo_data = []
+class NEO:
 
     des = 0
     orbit_id = 1
@@ -22,17 +20,29 @@ def get_NEO_flyby():
     body = 10
     h = 11
 
+    json_data_url = requests.get("https://ssd-api.jpl.nasa.gov/cad.api?body=Earth&dist-max=20LD")
+    json_data = json.loads(json_data_url.text)
+
+    neo_data = []
+
+    def estimated_diameter(self):
+        # todo
+
+    def flyby_data(self):
+
     unix = time.time()
     datestamp = datetime.datetime.fromtimestamp(unix).strftime("%Y-%b-%d")
 
-    json_data_url = requests.get("https://ssd-api.jpl.nasa.gov/cad.api?body=Earth&dist-max=20LD")
-    json_data = json.loads(json_data_url.text)
     for i in range(len(json_data["data"])):
         neo_date = json_data["data"][i][cd][:11]
         neo_time = json_data["data"][i][cd][11:]
+        neo_des = json_data["data"][i][des]
 
         if neo_date == datestamp:
-            neo_data.append((json_data["data"][i][des],))
+            neo_data.append((neo_des, neo_time,))
+
+
+
 
 
 
@@ -40,9 +50,6 @@ def get_NEO_flyby():
         
         # sorte lieber per magnitude und nimm nur das größte objekt, sonst ist der tweet zu lang
 
-
-
-get_NEO_flyby()
 
 
 # TODO: Iterate over data and return tuple
