@@ -34,7 +34,7 @@ class NEO:
         for i in range(len(self.json_data["data"])):
 
             neo_date = self.json_data["data"][i][3][:11]
-            neo_time = self.json_data["data"][i][3][11:]
+            neo_time = self.json_data["data"][i][3][12:]
             neo_des = self.json_data["data"][i][0]
             magnitude = float(self.json_data["data"][i][10])
             diameter_min = 10 ** (0.5*(6.259 - log10(0.25) - 0.4 * magnitude))
