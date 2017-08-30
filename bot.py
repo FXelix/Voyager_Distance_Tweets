@@ -11,14 +11,14 @@ api = tweepy.API(auth)
 
 for distance in get_distance():
     try:
-        voyager_message = "Voyager I is now {:,} km from Earth. \nVoyager II is now {:,} km from Earth.".format(*distance)
+        voyager_message = "Voyager I is now {:,} km from Earth. \nVoyager II is now {:,} km from Earth. \n#bot #space #voyager".format(*distance)
         api.update_status(voyager_message)
     except IndexError:
         pass
 
 for data in NEO().flyby_data():
     try:
-        new_neo = "Today's NEO: Object: {} at {}. Estimated diameter: {} - {} km.".format(*data)
+        new_neo = "Today's NEO: Object: {} at {}. Estimated diameter: {} - {} km. \n#bot #NEO #asteroids".format(*data)
         api.update_status(new_neo)
     except IndexError:
-        api.update_status("No near-Earth objects for today! We're save! ...at least for now...")
+        api.update_status("No near-Earth objects for today! We're save! ...at least for now... \n#bot #doomsday #NEO #asteroids")
