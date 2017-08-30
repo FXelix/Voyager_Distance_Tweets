@@ -19,8 +19,7 @@ class NEO:
     v_rel = 7
     v_inf = 8
     t_signma_F = 9
-    body = 10
-    h = 11
+    h = 10
     """
     json_data_url = requests.get("https://ssd-api.jpl.nasa.gov/cad.api?body=Earth&dist-max=20LD")
     json_data = json.loads(json_data_url.text)
@@ -33,13 +32,15 @@ class NEO:
         datestamp = datetime.datetime.fromtimestamp(unix).strftime("%Y-%b-%d")
 
         for i in range(len(self.json_data["data"])):
+
             neo_date = self.json_data["data"][i][3][:11]
             neo_time = self.json_data["data"][i][3][11:]
             neo_des = self.json_data["data"][i][0]
-            diameter_min = 10 ** 0.5*(6.259 - log10(0.05) - 0.4 * self.json_data["data"][i][11])
-            diameter_max = 10 ** 0.5*(6.259 - log10(0.25) - 0.4 * self.json_data["data"][i][11])
+            magnitude = float(self.json_data["data"][i][10])
+            diameter_min = 10 ** (0.5*(6.259 - log10(0.25) - 0.4 * magnitude))
+            diameter_max = 10 ** (0.5*(6.259 - log10(0.05) - 0.4 * magnitude))
 
             if neo_date == datestamp:
-                self.neo_data.append((neo_des, neo_time, diameter_min, diameter_max))
+                self.neo_data.append((neo_des, neo_time, round(diameter_min,4), round(diameter_max,4)))
                 
         return self.neo_data
