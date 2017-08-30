@@ -5,7 +5,7 @@ Link: https://twitter.com/space_facts_bot
 ![alt text](https://img.shields.io/badge/status-in%20development-yellow.svg)
 ![alt text](https://img.shields.io/badge/license-MIT-blue.svg)
 
-# Reqirements [TODO]
+--- 
+# Requirements
  
 # Example
-
