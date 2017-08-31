@@ -9,12 +9,11 @@ auth = tweepy.OAuthHandler(C_KEY, C_SECRET)
 auth.set_access_token(A_TOKEN, A_TOKEN_SECRET)
 api = tweepy.API(auth)
 
-for distance in get_distance():
-    try:
-        voyager_message = "Voyager I is now {:,} km from Earth. \nVoyager II is now {:,} km from Earth. \n#bot #space #voyager".format(*distance)
-        api.update_status(voyager_message)
-    except IndexError:
-        pass
+try:
+    voyager_message = "Voyager I is now {:,} km from Earth. \nVoyager II is now {:,} km from Earth. \n#bot #space #voyager".format(*get_distance())
+    api.update_status(voyager_message)
+except IndexError:
+    pass
 
 for data in NEO().flyby_data():
     try:

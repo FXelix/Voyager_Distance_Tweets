@@ -10,8 +10,9 @@ def get_distance():
     try:
         res_1.raise_for_status()
         res_2.raise_for_status()
-    except Exception as exc:
-        print(f"Error {exc}")
+    except requests.HTTPError as exc:
+        print(f"Errorcode: {exc}")
+        return
 
     soup1 = bs4.BeautifulSoup(res_1.text, "html.parser")
     soup2 = bs4.BeautifulSoup(res_2.text, "html.parser")
@@ -22,4 +23,4 @@ def get_distance():
     distance_voyager_1 = int(distance_element_1[0].getText())
     distance_voyager_2 = int(distance_element_2[0].getText())
 
-    return (distance_voyager_1, distance_voyager_2)
+    return distance_voyager_1, distance_voyager_2
