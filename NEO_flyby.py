@@ -2,7 +2,6 @@
 import time
 import datetime
 import requests
-import json
 from math import log10
 
 
@@ -21,8 +20,8 @@ class NEO:
     t_signma_F = 9
     h = 10
     """
-    json_data_url = requests.get("https://ssd-api.jpl.nasa.gov/cad.api?body=Earth&dist-max=20LD")
-    json_data = json.loads(json_data_url.text)
+
+    json_data = requests.get("https://ssd-api.jpl.nasa.gov/cad.api?body=Earth&dist-max=20LD").json()
 
     neo_data = []
 
