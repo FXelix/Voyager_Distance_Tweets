@@ -12,6 +12,8 @@ Near-Earth objects data from the NASA/JPL SBDB Close Approach Data API: https://
 
 Voyager Distance data from: https://theskylive.com/voyager1-tracker / https://theskylive.com/voyager2-tracker
 
+NASA's Astronomical Picture of the Day (APOD): https://api.nasa.gov/api.html#apod
+
 ## Examples
 
 - Voyager I is now 20,858,510,826 km from Earth. Voyager II is now 17,163,741,991 km from Earth. #bot #space #voyager
