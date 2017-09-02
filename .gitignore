@@ -2,9 +2,4 @@
 /.idea/
 /secrets.py
 __pycache__/
-/.idea/inspectionProfiles/
-/.idea/misc.xml
-/.idea/modules.xml
-/.idea/space_facts_bot.iml
-/.idea/vcs.xml
-/.idea/workspace.xml
+/APODs/
