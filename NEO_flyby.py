@@ -7,7 +7,7 @@ from math import log10
 
 class NEO:
     """
-    For accesing the data, corresponding numbers:
+    To access the data, corresponding numbers:
     des = 0
     orbit_id = 1
     jd = 2
@@ -36,6 +36,8 @@ class NEO:
             neo_time = self.json_data["data"][i][3][12:]
             neo_des = self.json_data["data"][i][0]
             magnitude = float(self.json_data["data"][i][10])
+
+            #formula for diameter
             diameter_min = 10 ** (0.5*(6.259 - log10(0.25) - 0.4 * magnitude))
             diameter_max = 10 ** (0.5*(6.259 - log10(0.05) - 0.4 * magnitude))
 

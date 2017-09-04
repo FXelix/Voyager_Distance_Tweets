@@ -24,6 +24,6 @@ for data in NEO().flyby_data():
         api.update_status("No near-Earth objects for today! We're save! ...at least for now... \n#bot #doomsday #NEO #asteroids")
 
 try:
-    api.update_with_media(get_apod(),status="The Astronomical Picute of the Day by NASA. #bot #NASA #space")
+    api.update_with_media(get_apod(), status="The Astronomical Picture of the Day by NASA. #bot #NASA #space")
 except tweepy.TweepError:
     pass
