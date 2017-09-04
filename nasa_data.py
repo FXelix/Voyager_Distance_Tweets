@@ -9,6 +9,8 @@ def get_apod():
     try:
         apod_data = requests.get("https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY").json()
         image_url = apod_data["url"]
+        if image_url.endswith(".gif"):
+            return
         image_data = requests.get(image_url, stream=True)
     except requests.HTTPError:
         return

@@ -16,12 +16,15 @@ try:
 except IndexError:
     pass
 
-for data in NEO().flyby_data():
-    try:
-        new_neo = "Today's NEO: Object: {} at {}. Estimated diameter: {} - {} km. \n#bot #NEO #asteroids".format(*data)
-        api.update_status(new_neo)
-    except IndexError:
-        api.update_status("No near-Earth objects for today! We're save! ...at least for now... \n#bot #doomsday #NEO #asteroids")
+if not NEO().flyby_data():
+    api.update_status("No near-Earth objects for today! We're save! ...at least for now... \n#bot #doomsday #NEO #asteroids")
+else:
+    for data in NEO().flyby_data():
+        try:
+            new_neo = "Today's NEO: Object: {} at {}. Estimated diameter: {} - {} km. \n#bot #NEO #asteroids".format(*data)
+            api.update_status(new_neo)
+        except IndexError:
+            pass
 
 try:
     api.update_with_media(get_apod(), status="The Astronomical Picture of the Day by NASA. #bot #NASA #space")
