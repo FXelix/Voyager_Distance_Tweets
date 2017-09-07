@@ -22,4 +22,8 @@ NASA's Astronomical Picture of the Day (APOD): https://api.nasa.gov/api.html#apo
 - APOD: 2nd september 2017: 
 <img src="https://apod.nasa.gov/apod/image/1709/voyager_modern_poster.jpg" alt="APOD: 2nd september 2017" height="400"/>
 
+## TODO
+
+- Add more information, possibly trough more APIs
+- Allow .gif formats, but only up to 3MB (Twitter limitation)
 
