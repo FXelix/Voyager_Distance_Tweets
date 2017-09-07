@@ -22,8 +22,18 @@ NASA's Astronomical Picture of the Day (APOD): https://api.nasa.gov/api.html#apo
 - APOD: 2nd september 2017: 
 <img src="https://apod.nasa.gov/apod/image/1709/voyager_modern_poster.jpg" alt="APOD: 2nd september 2017" height="400"/>
 
+
+## Project Structure
+
+- bot.py is the main file from where the tweets are send. 
+
+- voyager_distance.py, NEO_flyby.py and nasa_data.py are the files resonsible for accessing the APIs and scraping the data.
+
+- The individual scripts are written in a way that no error might interrupt the process. Instead no tweet will be send regarding that data.
+
 ## TODO
 
 - Add more information, possibly trough more APIs
-- Allow .gif formats, but only up to 3MB (Twitter limitation)
+- ~Allow .gif formats, but only up to 3MB (Twitter limitation)~
+
 
