@@ -7,16 +7,25 @@ def get_apod():
 
     os.makedirs("APODs", exist_ok=True)
     try:
-        apod_data = requests.get("https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY").json()
+        # check if website is accessible
+        apod_data = requests.get("https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY")
+        apod_data.raise_for_status()
+        apod_data = apod_data.json()
+
+        # check if image is accessible
         image_url = apod_data["url"]
-        if image_url.endswith(".gif"):
-            raise TypeError
         image_data = requests.get(image_url, stream=True)
-    except (requests.HTTPError or TypeError):
+        image_data.raise_for_status()
+    except requests.HTTPError:
         return
 
     with open(os.path.join("APODs", os.path.basename(image_url)), "wb") as imagefile:
         for chunk in image_data.iter_content(100000):
             imagefile.write(chunk)
-        return os.path.abspath((os.path.join("APODs", os.path.basename(image_url))))
 
+    # Twitter limitation: .gif must be smaller than 3MB
+    if image_url.endswith(".gif") and os.path.getsize(os.path.join("APODs", os.path.basename(image_url))) >= 3145728:
+        return
+
+    else:
+        return os.path.abspath((os.path.join("APODs", os.path.basename(image_url))))
