@@ -1,5 +1,4 @@
 
-import time
 import datetime
 import requests
 from math import log10
@@ -25,6 +24,11 @@ class NEO:
 
     neo_data = []
 
+    @staticmethod
+    def diameter_calc(log_value, mag):
+        #formula for diamter calculation
+        return 10**(0.5*(6.259 - log10(log_value) - 0.4*mag))
+
     def flyby_data(self):
 
         # unix = time.time()
@@ -34,22 +38,17 @@ class NEO:
         now = datetime.datetime.now()
         datestamp = "{:%Y-%b-%d}".format(now)
 
-        for i in range(len(self.json_data["data"])):
+        for data in self.json_data["data"]:
 
-            neo_date = self.json_data["data"][i][3][:11]
-            neo_time = self.json_data["data"][i][3][12:]
-            neo_des = self.json_data["data"][i][0]
-            magnitude = float(self.json_data["data"][i][10])
+            neo_date = data[3][:11]
+            neo_time = data[3][12:]
+            neo_des = data[0]
+            magnitude = float(data[10])
 
-            #formula for diameter
-            diameter_min = 10 ** (0.5*(6.259 - log10(0.25) - 0.4 * magnitude))
-            diameter_max = 10 ** (0.5*(6.259 - log10(0.05) - 0.4 * magnitude))
+            diameter_min = self.diameter_calc(0.25, magnitude)
+            diameter_max = self.diameter_calc(0.05, magnitude)
 
             if neo_date == datestamp:
                 self.neo_data.append((neo_des, neo_time, round(diameter_min,4), round(diameter_max,4)))
                 
         return self.neo_data
-
-
-# TODO: change: "range(len(self.json_data["data"]))"
-# TODO: put formula for diameter in a function
