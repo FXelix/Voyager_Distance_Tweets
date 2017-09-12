@@ -34,6 +34,7 @@ NASA's Astronomical Picture of the Day (APOD): https://api.nasa.gov/api.html#apo
 ## TODO
 
 - Add more information, possibly trough more APIs
+- more explicit file and extension handling in nasa_data.py (e.g youtube video as APOD)
 - ~Allow .gif formats, but only up to 3MB (Twitter limitation)~
 
 
