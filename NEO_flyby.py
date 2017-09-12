@@ -27,8 +27,12 @@ class NEO:
 
     def flyby_data(self):
 
-        unix = time.time()
-        datestamp = datetime.datetime.fromtimestamp(unix).strftime("%Y-%b-%d")
+        # unix = time.time()
+        # datestamp = datetime.datetime.fromtimestamp(unix).strftime("%Y-%b-%d")
+
+        # better way to do it:
+        now = datetime.datetime.now()
+        datestamp = "{:%Y-%b-%d}".format(now)
 
         for i in range(len(self.json_data["data"])):
 
@@ -45,3 +49,7 @@ class NEO:
                 self.neo_data.append((neo_des, neo_time, round(diameter_min,4), round(diameter_max,4)))
                 
         return self.neo_data
+
+
+# TODO: change: "range(len(self.json_data["data"]))"
+# TODO: put formula for diameter in a function
