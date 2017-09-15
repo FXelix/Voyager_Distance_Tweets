@@ -2,7 +2,7 @@
 This is a little twitterbot tells you the distance from earth to Voyager I &amp; II and other cool facts like nearby NEOs (near-earth-objects).
 **Link**: https://twitter.com/space_facts_bot
 
-![alt text](https://img.shields.io/badge/status-in%20development-yellow.svg)
+![alt text](https://img.shields.io/badge/status-in%20development-green.svg)
 ![alt text](https://img.shields.io/badge/license-MIT-blue.svg)
 
 --- 
@@ -34,7 +34,8 @@ NASA's Astronomical Picture of the Day (APOD): https://api.nasa.gov/api.html#apo
 ## TODO
 
 - Add more information, possibly trough more APIs
-- more explicit file and extension handling in nasa_data.py (e.g youtube video as APOD)
+- clean up code and be DRYer
+- ~more explicit file and extension handling in nasa_data.py (e.g youtube video as APOD)~
 - ~Allow .gif formats, but only up to 3MB (Twitter limitation)~
 
 
