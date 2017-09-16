@@ -3,7 +3,7 @@ import tweepy
 from secrets import *
 from voyager_distance import get_distance
 from NEO_flyby import NEO
-from nasa_data import get_apod, get_url
+from nasa_data import get_apod
 
 # standard for accessing Twitter API
 auth = tweepy.OAuthHandler(C_KEY, C_SECRET)
@@ -27,12 +27,12 @@ else:
             pass
 
 try:
-    api.update_with_media(get_apod(), status="The Astronomical Picture of the Day by NASA. #bot #NASA #space")
-except tweepy.TweepError:
-    pass
-
-try:
-    message_video = "The Astronomical Picture of the Day by NASA. \n{} #bot #NASA #space".format(get_url())
-    api.update_status(message_video)
+    if not get_apod().endswith((".png",".gif",".jpeg",".jpg")):
+        # message with url if APOD is a not an image
+        message_video = "The Astronomical Picture of the Day by NASA. \n{} #bot #NASA #space".format(get_apod())
+        api.update_status(message_video)
+    else:
+        # message with image
+        api.update_with_media(get_apod(), status="The Astronomical Picture of the Day by NASA. #bot #NASA #space")
 except tweepy.TweepError:
     pass
