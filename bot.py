@@ -23,7 +23,7 @@ else:
         try:
             new_neo = "Today's NEO: Object: {} at {}. Estimated diameter: {} - {} km. \n#bot #NEO #asteroids".format(*data)
             api.update_status(new_neo)
-        except IndexError:
+        except (IndexError or tweepy.TweepError):
             pass
 
 try:
