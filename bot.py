@@ -19,12 +19,13 @@ except IndexError:
 if not NEO().flyby_data():
     api.update_status("No near-Earth objects for today! We're save! ...at least for now... \n#bot #doomsday #NEO #asteroids")
 else:
-    for data in NEO().flyby_data():
-        try:
+
+    try:
+        for data in NEO().flyby_data():
             new_neo = "Today's NEO: Object: {} at {}. Estimated diameter: {} - {} km. \n#bot #NEO #asteroids".format(*data)
             api.update_status(new_neo)
-        except (IndexError or tweepy.TweepError):
-            pass
+    except (IndexError or tweepy.TweepError):
+        pass
 
 try:
     if not get_apod().endswith((".png",".gif",".jpeg",".jpg")):
