@@ -2,7 +2,7 @@
 import tweepy
 from secrets import *
 from voyager_distance import get_distance
-from NEO_flyby import NEO
+from NEO_flyby import flyby_data
 from nasa_data import get_apod
 
 # standard for accessing Twitter API
@@ -16,12 +16,11 @@ try:
 except IndexError:
     pass
 
-if not NEO().flyby_data():
+if not flyby_data():
     api.update_status("No near-Earth objects for today! We're save! ...at least for now... \n#bot #doomsday #NEO #asteroids")
 else:
-
     try:
-        for data in NEO().flyby_data():
+        for data in flyby_data():
             new_neo = "Today's NEO: Object: {} at {}. Estimated diameter: {} - {} km. \n#bot #NEO #asteroids".format(*data)
             api.update_status(new_neo)
     except (IndexError or tweepy.TweepError):
